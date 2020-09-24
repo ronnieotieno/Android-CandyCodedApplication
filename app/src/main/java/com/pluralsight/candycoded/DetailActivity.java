@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -66,6 +67,16 @@ public class DetailActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.detail, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Intent createShareIntent = new Intent(android.content.Intent.ACTION_SEND);
+        createShareIntent.setType("text/plain");
+        createShareIntent.putExtra(HASHTAG_CANDYCODED, SHARE_DESCRIPTION);
+        startActivity(createShareIntent);
+        return super.onOptionsItemSelected(item);
     }
 
     // ***
